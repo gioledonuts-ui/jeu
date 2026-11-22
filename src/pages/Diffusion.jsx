@@ -18,9 +18,10 @@ const SCENES = [
   { id: 'duel', label: 'Duel' },
 ];
 
+/* Badge « Duel » étoilé (charte §10) */
 function DuelBadge() {
   return (
-    <svg viewBox="0 0 120 120" className="h-20 w-20 sm:h-24 sm:w-24 drop-shadow-[0_0_18px_rgba(255,194,46,.45)]" role="img" aria-label="Badge Duel">
+    <svg viewBox="0 0 120 120" className="h-24 w-24 drop-shadow-[0_0_24px_rgba(255,194,46,.55)] sm:h-28 sm:w-28" role="img" aria-label="Badge Duel">
       <defs>
         <linearGradient id="star-gold" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#FFE066" />
@@ -39,11 +40,12 @@ function DuelBadge() {
   );
 }
 
+/* Chronomètre circulaire du duel (charte §10 — bande orange radiée absente ici ; minuterie) */
 function DuelTimer() {
   const R = 52;
   const C = 2 * Math.PI * R;
   return (
-    <div className="relative flex h-24 w-24 items-center justify-center sm:h-28 sm:w-28" role="timer" aria-label="Chronomètre 00:30">
+    <div className="relative flex h-28 w-28 items-center justify-center sm:h-32 sm:w-32" role="timer" aria-label="Chronomètre 00:30">
       <svg viewBox="0 0 120 120" className="absolute inset-0 h-full w-full -rotate-90">
         <circle cx="60" cy="60" r={R} fill="none" stroke="rgba(255,255,255,.18)" strokeWidth="7" />
         <circle
@@ -59,7 +61,7 @@ function DuelTimer() {
           opacity="0.95"
         />
       </svg>
-      <span className="font-montserrat text-2xl font-extrabold tracking-wider text-allum sm:text-3xl">00:30</span>
+      <span className="font-montserrat text-2xl font-extrabold tracking-wider text-allum sm:text-4xl">00:30</span>
     </div>
   );
 }
@@ -77,31 +79,29 @@ export default function Diffusion() {
       <Starfield mode={duel ? 'duel' : 'blue'} density={duel ? 170 : 150} />
       <div className="vignette" aria-hidden="true" />
 
-      {/* Badge haut-gauche (hors duel : pastille EN DIRECT ; duel : badge Duel) */}
+      {/* --- Chrome haut : badge EN DIRECT / badge Duel + wordmark --- */}
       {!duel ? (
-        <div className="absolute left-4 top-4 z-20 flex items-center gap-2 rounded-full border border-white/10 bg-black/35 py-1 pl-2 pr-4 backdrop-blur-sm">
-          <span className="h-2.5 w-2.5 animate-liveDot rounded-full bg-rouge shadow-[0_0_8px_rgba(230,54,70,.9)]" aria-hidden="true" />
-          <span className="font-montserrat text-[10px] font-extrabold uppercase tracking-[0.3em] text-allum/90">En direct</span>
-          <span className="font-oswald text-sm font-semibold tracking-[0.2em] text-cyanclair">JEU</span>
+        <div className="absolute left-4 top-3 z-20 flex items-center gap-2 rounded-full border border-white/10 bg-black/40 py-1 pl-2 pr-4 backdrop-blur-sm sm:left-6 sm:top-4">
+          <span className="h-2.5 w-2.5 animate-liveDot rounded-full bg-rouge shadow-[0_0_10px_rgba(230,54,70,.95)]" aria-hidden="true" />
+          <span className="font-montserrat text-[10px] font-extrabold uppercase tracking-[0.3em] text-allum/90 sm:text-[11px]">En direct</span>
+          <span className="font-oswald text-sm font-semibold tracking-[0.25em] text-cyanclair sm:text-base">JEU</span>
         </div>
       ) : (
-        <div className="absolute left-3 top-2 z-20 sm:left-6 sm:top-4">
-          <DuelBadge />
-        </div>
-      )}
-      {duel && (
-        <div className="absolute right-4 top-6 z-20 font-oswald text-lg font-semibold tracking-[0.35em] text-[#FFD9A0]/90 sm:text-xl">
-          JEU
-        </div>
-      )}
-      {duel && (
-        <div className="absolute left-1/2 top-3 z-20 -translate-x-1/2 sm:top-4">
-          <DuelTimer />
-        </div>
+        <>
+          <div className="absolute left-3 top-3 z-20 sm:left-6 sm:top-5">
+            <DuelBadge />
+          </div>
+          <div className="absolute right-4 top-5 z-20 font-oswald text-xl font-semibold tracking-[0.4em] text-[#FFD9A0]/90 sm:text-2xl">
+            JEU
+          </div>
+          <div className="absolute left-1/2 top-3 z-20 -translate-x-1/2 sm:top-4">
+            <DuelTimer />
+          </div>
+        </>
       )}
 
-      {/* Barre de démo (squelette) — ne fait pas partie de l'habillage OBS en production */}
-      <div className="absolute right-3 top-3 z-30 flex items-center gap-1 rounded-full border border-white/15 bg-black/50 p-1 backdrop-blur-md">
+      {/* --- Sélecteur de scènes de DÉMO (outil OBS/preview — hors habillage spectateurs) --- */}
+      <div className="absolute right-3 top-3 z-30 flex items-center gap-1 rounded-full border border-white/15 bg-black/55 p-1 backdrop-blur-md sm:right-4 sm:top-4">
         <span className="hidden px-2 text-[9px] font-bold uppercase tracking-[0.25em] text-grisbleu sm:inline">
           Démo
         </span>
@@ -128,12 +128,28 @@ export default function Diffusion() {
         </a>
       </div>
 
-      {/* --- Scènes ------------------------------------------------------ */}
+      {/* --- Scène : la question DOMINE (haut), les cadres emplissent le centre --- */}
 
       {scene === 'generale' && (
-        <div className="relative z-10 flex h-full flex-col">
-          <div className="flex min-h-0 flex-1 items-center justify-center gap-[1.5%] px-[2%] pb-3 pt-14">
-            <VideoFrame label="PRÉSENTATEUR" variant="presenter" lives={2} heartsSize={22} className="w-[19%]" aspect="aspect-[5/6]" />
+        <div className="relative z-10 flex h-full flex-col pt-14 sm:pt-16">
+          {/* Question — grande, en haut */}
+          <div className="shrink-0">
+            <QuestionBand placement="top">{DEMO_QUESTION}</QuestionBand>
+            <div className="neon-line mx-auto mt-2 w-3/4 max-w-4xl sm:mt-3" aria-hidden="true" />
+          </div>
+
+          {/* Cadres — grands, centrés, halo derrière */}
+          <div className="relative flex min-h-0 flex-1 items-center justify-center gap-[2%] px-[1.5%] pb-5">
+            <div aria-hidden="true" className="frame-backdrop left-[12%] right-[12%] top-[8%] h-[78%]" />
+            <VideoFrame
+              label="PRÉSENTATEUR"
+              variant="presenter"
+              lives={2}
+              heartsSize={26}
+              className="relative"
+              innerClass="h-[42vh] lg:h-[48vh] aspect-[4/5]"
+              labelClassName="text-sm sm:text-base px-5 py-1 sm:px-6"
+            />
             {CANDIDATES.map((c) => (
               <VideoFrame
                 key={c.id}
@@ -141,28 +157,32 @@ export default function Diffusion() {
                 variant="candidate"
                 hue={c.hue}
                 lives={c.lives}
-                heartsSize={22}
-                className="w-[16%]"
-                aspect="aspect-[5/6]"
+                heartsSize={26}
+                className="relative"
+                innerClass="h-[38vh] lg:h-[44vh] aspect-[4/5]"
+                labelClassName="text-xs sm:text-sm px-4 py-1 sm:px-5"
               />
             ))}
           </div>
-          <QuestionBand className="shrink-0">{DEMO_QUESTION}</QuestionBand>
         </div>
       )}
 
       {scene === 'question' && (
-        <div className="relative z-10 flex h-full flex-col">
-          <div className="flex min-h-0 flex-1 items-center justify-center gap-[4%] px-[4%] pb-2 pt-14">
-            <VideoFrame label="PRÉSENTATEUR" variant="presenter" lives={2} showLives={false} aspect="aspect-[16/10]" className="w-[36%] max-w-[560px]" />
-            <VideoFrame label="CANDIDAT" variant="candidate" hue={CANDIDATES[0].hue} lives={2} showLives={false} aspect="aspect-[16/10]" className="w-[36%] max-w-[560px]" />
+        <div className="relative z-10 flex h-full flex-col pt-14 sm:pt-16">
+          <div className="shrink-0">
+            <QuestionBand placement="top">{DEMO_QUESTION}</QuestionBand>
+            <div className="neon-line mx-auto mt-2 w-3/4 max-w-4xl" aria-hidden="true" />
           </div>
-          <QuestionBand className="shrink-0">{DEMO_QUESTION}</QuestionBand>
-          <div className="flex shrink-0 items-stretch justify-center gap-[2.5%] px-6 pb-5 pt-3">
-            <AnswerPill state="neutral" className="w-[36%] max-w-[520px] py-3 text-base sm:text-xl">
+          <div className="relative flex min-h-0 flex-1 items-center justify-center gap-[3%] px-[3%] pb-3">
+            <div aria-hidden="true" className="frame-backdrop left-[18%] right-[18%] top-[10%] h-[70%]" />
+            <VideoFrame label="PRÉSENTATEUR" variant="presenter" lives={2} showLives={false} innerClass="h-[38vh] lg:h-[44vh] aspect-[16/10]" className="relative" labelClassName="text-sm sm:text-base px-6 py-1" />
+            <VideoFrame label="CANDIDAT" variant="candidate" hue={CANDIDATES[0].hue} lives={2} showLives={false} innerClass="h-[38vh] lg:h-[44vh] aspect-[16/10]" className="relative" labelClassName="text-sm sm:text-base px-6 py-1" />
+          </div>
+          <div className="flex shrink-0 items-stretch justify-center gap-[2.5%] px-6 pb-5 pt-1">
+            <AnswerPill state="neutral" className="w-[36%] max-w-[560px] py-4 text-base sm:py-5 sm:text-2xl">
               {DEMO_VISIBLE_ANSWER}
             </AnswerPill>
-            <AnswerPill state="selected" masked className="w-[36%] max-w-[520px] py-3 text-base sm:text-xl">
+            <AnswerPill state="selected" masked className="w-[36%] max-w-[560px] py-4 text-base sm:py-5 sm:text-2xl">
               masquée
             </AnswerPill>
           </div>
@@ -170,41 +190,47 @@ export default function Diffusion() {
       )}
 
       {scene === 'sept' && (
-        <div className="relative z-10 flex h-full flex-col">
-          <div className="flex min-h-0 flex-1">
-            <ol className="flex w-[46%] min-w-0 flex-col justify-center gap-1.5 overflow-y-auto px-[3%] pb-2 pt-14 sm:gap-2.5">
+        <div className="relative z-10 flex h-full flex-col pt-14 sm:pt-16">
+          <div className="shrink-0">
+            <QuestionBand placement="top">{DEMO_SEPT_QUESTION}</QuestionBand>
+            <div className="neon-line mx-auto mt-2 w-3/4 max-w-4xl" aria-hidden="true" />
+          </div>
+          <div className="relative flex min-h-0 flex-1">
+            <div aria-hidden="true" className="frame-backdrop left-[55%] right-[4%] top-[8%] h-[80%]" />
+            <ol className="relative flex w-[48%] min-w-0 flex-col justify-center gap-2 overflow-y-auto px-[3%] py-3 sm:gap-3">
               {DEMO_SEPT_ITEMS.map((item) => {
                 const state =
                   item.state === 'validated' ? 'correct' : item.state === 'selected' ? 'selected' : 'neutral';
                 return (
-                  <li key={item.n} className="flex items-center gap-1.5 sm:gap-2">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-cyan/60 bg-panneau2 font-montserrat text-[11px] font-extrabold text-cyanclair sm:h-9 sm:w-9 sm:text-sm">
+                  <li key={item.n} className="flex items-center gap-2 sm:gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-cyan/70 bg-panneau2 font-montserrat text-[12px] font-extrabold text-cyanclair shadow-[0_0_10px_rgba(53,224,248,.35)] sm:h-11 sm:w-11 sm:text-base">
                       #{item.n}
                     </span>
-                    <AnswerPill state={state} className="min-w-0 flex-1 justify-start px-3 py-1.5 text-[10px] sm:px-4 sm:py-2 sm:text-sm">
+                    <AnswerPill state={state} className="min-w-0 flex-1 justify-start px-3 py-2 text-[11px] sm:px-5 sm:py-3 sm:text-base">
                       <span className="truncate">{item.text}</span>
                     </AnswerPill>
                   </li>
                 );
               })}
             </ol>
-            <div className="flex min-w-0 flex-1 items-center justify-center px-[3%] pb-2 pt-14">
-              <VideoFrame label="CANDIDAT" variant="candidate" hue={CANDIDATES[0].hue} lives={2} showLives={false} aspect="aspect-[5/6]" className="w-full max-w-[300px] sm:max-w-[380px]" />
+            <div className="relative flex min-w-0 flex-1 items-center justify-center px-[2%]">
+              <VideoFrame label="CANDIDAT" variant="candidate" hue={CANDIDATES[0].hue} lives={2} showLives={false} innerClass="h-[46vh] lg:h-[54vh] aspect-[5/6]" className="relative" labelClassName="text-sm sm:text-base px-6 py-1.5" />
             </div>
           </div>
-          <QuestionBand className="shrink-0 text-sm sm:text-lg">{DEMO_SEPT_QUESTION}</QuestionBand>
         </div>
       )}
 
       {scene === 'duel' && (
-        <div className="relative z-10 flex h-full flex-col">
-          <div className="flex min-h-0 flex-1 items-center justify-center gap-[7%] px-[6%] pb-2 pt-24 sm:pt-28">
-            <VideoFrame label="CANDIDAT A" variant="candidate" hue={CANDIDATES[0].hue} duel showLives={false} aspect="aspect-[3/4]" className="w-[30%] max-w-[330px]" labelClassName="text-xs sm:text-sm px-5 py-1" />
-            <VideoFrame label="CANDIDAT B" variant="candidate" hue={CANDIDATES[1].hue} duel showLives={false} aspect="aspect-[3/4]" className="w-[30%] max-w-[330px]" labelClassName="text-xs sm:text-sm px-5 py-1" />
+        <div className="relative z-10 flex h-full flex-col pt-[7.5rem] sm:pt-32">
+          <div className="shrink-0">
+            <QuestionBand placement="top" duel>{DEMO_QUESTION}</QuestionBand>
+            <div className="neon-line-or mx-auto mt-2 w-3/4 max-w-4xl" aria-hidden="true" />
           </div>
-          <QuestionBand duel className="shrink-0">
-            {DEMO_QUESTION}
-          </QuestionBand>
+          <div className="relative flex min-h-0 flex-1 items-center justify-center gap-[6%] px-[5%] pb-5">
+            <div aria-hidden="true" className="frame-backdrop left-[22%] right-[22%] top-[4%] h-[88%]" style={{ background: 'radial-gradient(ellipse at center, rgba(255,150,60,.28), transparent 68%)' }} />
+            <VideoFrame label="CANDIDAT A" variant="candidate" hue={CANDIDATES[0].hue} duel showLives={false} innerClass="h-[42vh] lg:h-[50vh] aspect-[3/4]" className="relative" labelClassName="text-sm sm:text-base px-6 py-1.5" />
+            <VideoFrame label="CANDIDAT B" variant="candidate" hue={CANDIDATES[1].hue} duel showLives={false} innerClass="h-[42vh] lg:h-[50vh] aspect-[3/4]" className="relative" labelClassName="text-sm sm:text-base px-6 py-1.5" />
+          </div>
         </div>
       )}
     </main>

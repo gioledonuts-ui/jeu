@@ -14,20 +14,21 @@ export default function Participant() {
 
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-scene-blue text-allum">
-      <Starfield mode="blue" density={130} />
+      <Starfield mode="blue" density={140} />
       <div className="vignette" aria-hidden="true" />
 
-      <a href="#/" className="absolute left-4 top-4 z-20 text-[11px] font-semibold text-grisbleu transition-colors hover:text-allum">
+      <a href="#/" className="absolute left-4 top-4 z-20 text-[11px] font-semibold text-grisbleu transition-colors hover:text-allum sm:text-xs">
         ← Accueil
       </a>
-      <span className="absolute right-4 top-4 z-20 rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[8px] font-bold uppercase tracking-[0.25em] text-grisbleu backdrop-blur-sm">
+      <span className="absolute right-4 top-4 z-20 rounded-full border border-white/15 bg-black/40 px-3 py-1 text-[8px] font-bold uppercase tracking-[0.25em] text-grisbleu backdrop-blur-sm sm:text-[9px]">
         Squelette
       </span>
 
-      <div className="relative z-10 flex h-full flex-col justify-center gap-4 px-4 pb-24 pt-12 sm:gap-6 sm:pb-20">
-        {/* Cadres : présentateur + candidats (cœur au-dessus, nom en dessous — maquette 09) */}
-        <div className="mx-auto flex w-full max-w-4xl items-end justify-center gap-[2.5%]">
-          <VideoFrame label="PRÉSENTATEUR" variant="presenter" lives={2} labelPosition="bottom" heartsSize={18} aspect="aspect-[4/5]" className="w-[17%] min-w-[72px]" />
+      <div className="relative z-10 flex h-full flex-col items-center justify-center gap-5 px-4 pb-28 pt-14 sm:gap-7 sm:pb-24">
+        {/* Cadres — grands : présentateur + 4 candidats (cœur au-dessus, nom en dessous — maquette 09) */}
+        <div className="relative flex w-full max-w-6xl items-end justify-center gap-[2%]">
+          <div aria-hidden="true" className="frame-backdrop left-[8%] right-[8%] top-[6%] h-[84%]" />
+          <VideoFrame label="PRÉSENTATEUR" variant="presenter" lives={2} labelPosition="bottom" heartsSize={22} innerClass="h-[30vh] lg:h-[38vh] aspect-[4/5]" className="relative" labelClassName="text-xs sm:text-sm px-4 py-1" />
           {CANDIDATES.map((c) => (
             <VideoFrame
               key={c.id}
@@ -36,15 +37,16 @@ export default function Participant() {
               hue={c.hue}
               lives={c.lives}
               labelPosition="bottom"
-              heartsSize={18}
-              aspect="aspect-[4/5]"
-              className="w-[15%] min-w-[64px]"
+              heartsSize={22}
+              innerClass="h-[27vh] lg:h-[34vh] aspect-[4/5]"
+              className="relative"
+              labelClassName="text-xs sm:text-sm px-3 py-1"
             />
           ))}
         </div>
 
-        {/* Question — lecture seule côté participant */}
-        <QuestionBand className="mx-auto max-w-5xl">{DEMO_QUESTION}</QuestionBand>
+        {/* Question — grande, centrée, lecture seule côté participant */}
+        <QuestionBand placement="top" className="w-full max-w-6xl">{DEMO_QUESTION}</QuestionBand>
       </div>
 
       {/* Commandes micro / caméra (brief §3) */}
@@ -52,18 +54,18 @@ export default function Participant() {
         type="button"
         onClick={() => setMicOn((v) => !v)}
         aria-pressed={micOn}
-        className={`absolute bottom-5 left-4 z-20 flex items-center gap-2 rounded-full border-2 px-5 py-2.5 font-oswald text-sm font-semibold tracking-[0.15em] transition-all sm:bottom-7 sm:left-8 ${
+        className={`absolute bottom-6 left-4 z-20 flex items-center gap-3 rounded-2xl border-2 px-6 py-3.5 font-oswald text-base font-semibold tracking-[0.15em] transition-all sm:bottom-8 sm:left-8 sm:px-8 sm:text-xl ${
           micOn
-            ? 'border-vert/80 bg-vert/15 text-vert shadow-[0_0_18px_rgba(60,233,123,.35)]'
-            : 'border-orange/80 bg-orange/15 text-orange shadow-[0_0_18px_rgba(255,159,28,.35)]'
+            ? 'border-vert/80 bg-vert/15 text-vert shadow-[0_0_26px_rgba(60,233,123,.4)]'
+            : 'border-orange/80 bg-orange/15 text-orange shadow-[0_0_26px_rgba(255,159,28,.4)]'
         }`}
       >
         {micOn ? (
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" fill="none" aria-hidden="true">
             <path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-5a3.5 3.5 0 1 0-7 0v5A3.5 3.5 0 0 0 12 15zM6 11a6 6 0 0 0 12 0M12 17v4M9 21h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         ) : (
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" fill="none" aria-hidden="true">
             <path d="M9 9.5V8a3.5 3.5 0 0 1 6.6-1.7M12 15a3.5 3.5 0 0 0 3.4-2.7M12 15a3.5 3.5 0 0 1-.9-.2M6 11a6 6 0 0 0 9.4 5M18 11h-.4M12 17v4M9 21h6M4 4l16 16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         )}
@@ -74,20 +76,20 @@ export default function Participant() {
         type="button"
         onClick={() => setCamOn((v) => !v)}
         aria-pressed={camOn}
-        className={`absolute bottom-5 right-4 z-20 flex items-center gap-2 rounded-full border-2 px-5 py-2.5 font-oswald text-sm font-semibold tracking-[0.15em] transition-all sm:bottom-7 sm:right-8 ${
+        className={`absolute bottom-6 right-4 z-20 flex items-center gap-3 rounded-2xl border-2 px-6 py-3.5 font-oswald text-base font-semibold tracking-[0.15em] transition-all sm:bottom-8 sm:right-8 sm:px-8 sm:text-xl ${
           camOn
-            ? 'border-vert/80 bg-vert/15 text-vert shadow-[0_0_18px_rgba(60,233,123,.35)]'
-            : 'border-orange/80 bg-orange/15 text-orange shadow-[0_0_18px_rgba(255,159,28,.35)]'
+            ? 'border-vert/80 bg-vert/15 text-vert shadow-[0_0_26px_rgba(60,233,123,.4)]'
+            : 'border-orange/80 bg-orange/15 text-orange shadow-[0_0_26px_rgba(255,159,28,.4)]'
         }`}
       >
         CAM {camOn ? 'ON' : 'OFF'}
         {camOn ? (
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" fill="none" aria-hidden="true">
             <path d="M4 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
             <path d="M16 11l4.5-2.5v7L16 13" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
           </svg>
         ) : (
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" fill="none" aria-hidden="true">
             <path d="M4 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
             <path d="M16 11l4.5-2.5v7L16 13M3 3l18 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

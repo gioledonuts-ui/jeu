@@ -53,28 +53,28 @@ export default function Admin() {
       : 'hidden';
 
   return (
-    <main className="min-h-screen bg-[#0B1024] text-allum">
+    <main className="bg-scene-admin min-h-screen text-allum">
       {/* Barre de pilotage */}
-      <header className="sticky top-0 z-10 flex h-14 items-center justify-between border-b border-cyan/10 bg-[#0D1330]/90 px-4 backdrop-blur sm:px-6">
+      <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b border-cyan/15 bg-[#0D1330]/90 px-4 backdrop-blur sm:px-6">
         <div className="flex items-center gap-3">
           {/* pastille-logo générique du squelette (aucun logo définitif n'est défini) */}
-          <svg viewBox="0 0 32 32" className="h-6 w-6" aria-hidden="true">
+          <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden="true">
             <circle cx="16" cy="16" r="13" fill="none" stroke="#35E0F8" strokeWidth="5" strokeDasharray="58 24" strokeLinecap="round" transform="rotate(-35 16 16)" />
             <circle cx="16" cy="16" r="4.5" fill="#35E0F8" />
           </svg>
-          <h1 className="font-oswald text-lg font-semibold tracking-[0.12em] text-allum sm:text-xl">
+          <h1 className="font-oswald text-xl font-semibold tracking-[0.12em] text-allum sm:text-2xl">
             PILOTAGE — ÉMISSION
           </h1>
-          <span className="hidden rounded-full border border-or/50 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.25em] text-or sm:inline">
+          <span className="hidden rounded-full border border-or/50 px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.25em] text-or sm:inline">
             Squelette
           </span>
         </div>
-        <div className="flex items-center gap-3">
-          <a href="#/" className="text-[11px] font-semibold text-grisbleu transition-colors hover:text-allum">
+        <div className="flex items-center gap-4">
+          <a href="#/" className="text-[11px] font-semibold text-grisbleu transition-colors hover:text-allum sm:text-xs">
             ← Accueil
           </a>
           <div
-            className="rounded-lg border border-or/80 px-3 py-1 font-oswald text-xl font-bold leading-none text-or shadow-[0_0_16px_rgba(255,194,46,.35)] sm:text-2xl"
+            className="rounded-xl border border-or/80 px-4 py-1.5 font-oswald text-2xl font-bold leading-none text-or shadow-[0_0_18px_rgba(255,194,46,.4)] sm:text-3xl"
             role="timer"
             aria-label="Chronomètre 00:30"
           >
@@ -83,11 +83,11 @@ export default function Admin() {
         </div>
       </header>
 
-      <div className="mx-auto grid max-w-[1500px] grid-cols-1 gap-3 p-3 sm:p-4 lg:grid-cols-[290px_minmax(0,1fr)_225px]">
+      <div className="mx-auto grid max-w-[1500px] grid-cols-1 gap-4 p-3 sm:p-5 lg:grid-cols-[310px_minmax(0,1fr)_240px]">
         {/* --- Candidats ------------------------------------------------ */}
-        <section className="panel p-3" aria-labelledby="admin-candidats">
-          <h2 id="admin-candidats" className="panel-title">CANDIDATS</h2>
-          <div className="mt-2 flex flex-col gap-2">
+        <section className="panel panel-glow p-4" aria-labelledby="admin-candidats">
+          <h2 id="admin-candidats" className="panel-title text-sm">CANDIDATS</h2>
+          <div className="mt-3 flex flex-col gap-2.5">
             {CANDIDATES.map((c) => {
               const active = activeCandidate === c.id;
               return (
@@ -96,38 +96,38 @@ export default function Admin() {
                   type="button"
                   onClick={() => setActiveCandidate(c.id)}
                   aria-pressed={active}
-                  className={`row-candidate ${active ? '!border-cyan/60 shadow-[0_0_12px_rgba(53,224,248,.18)]' : ''}`}
+                  className={`row-candidate gap-3 px-3 py-3 ${active ? '!border-cyan/60 shadow-[0_0_16px_rgba(53,224,248,.22)]' : ''}`}
                 >
                   <span
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-oswald text-sm font-semibold text-white"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-oswald text-base font-semibold text-white ring-1 ring-white/20"
                     style={{ background: `linear-gradient(160deg, ${c.hue[0]}, ${c.hue[1]})` }}
                     aria-hidden="true"
                   >
                     {c.name.charAt(0)}
                   </span>
-                  <span className="min-w-0 flex-1 truncate font-montserrat text-sm font-bold text-allum">
+                  <span className="min-w-0 flex-1 truncate font-montserrat text-base font-bold text-allum">
                     {c.name}
                   </span>
-                  <LivesHearts lives={c.lives} size={15} />
+                  <LivesHearts lives={c.lives} size={18} />
                 </button>
               );
             })}
           </div>
-          <p className="mt-2 text-[10px] leading-snug text-grisbleu/80">
+          <p className="mt-3 text-[10px] leading-snug text-grisbleu/80">
             Sélection locale (démo) — aucune donnée n'est diffusée ni enregistrée.
           </p>
         </section>
 
         {/* --- Épreuve en cours ------------------------------------------ */}
-        <section className="panel flex flex-col gap-2 p-4 sm:p-5" aria-labelledby="admin-epreuve">
-          <div className="flex items-center justify-between gap-2">
-            <h2 id="admin-epreuve" className="panel-title">ÉPREUVE EN COURS</h2>
-            <span className="rounded-full border border-cyan/40 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.2em] text-cyanclair">
+        <section className="panel panel-glow flex flex-col gap-3 p-4 sm:p-6" aria-labelledby="admin-epreuve">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 id="admin-epreuve" className="panel-title text-sm">ÉPREUVE EN COURS</h2>
+            <span className="rounded-full border border-cyan/40 bg-cyan/10 px-3 py-0.5 text-[9px] font-bold uppercase tracking-[0.2em] text-cyanclair">
               Question individuelle
             </span>
           </div>
 
-          <p className="py-1 text-center font-montserrat text-lg font-extrabold leading-snug text-allum sm:text-2xl">
+          <p className="py-1 text-center font-montserrat text-xl font-extrabold leading-snug text-allum sm:text-3xl">
             {DEMO_QUESTION}
           </p>
 
@@ -137,7 +137,7 @@ export default function Admin() {
               as="button"
               state={visiblePillState}
               onClick={() => !verdict && setSelection('visible')}
-              className="w-full px-2 py-3 text-center text-[11px] leading-tight sm:text-base"
+              className="w-full px-2 py-4 text-center text-xs leading-tight sm:py-5 sm:text-xl"
             >
               {DEMO_VISIBLE_ANSWER}
             </AnswerPill>
@@ -146,14 +146,14 @@ export default function Admin() {
               state={hiddenPillState}
               masked={!revealed}
               onClick={() => !verdict && setSelection('hidden')}
-              className="w-full px-2 py-3 text-center text-[11px] leading-tight sm:text-base"
+              className="w-full px-2 py-4 text-center text-xs leading-tight sm:py-5 sm:text-xl"
             >
               {revealed ? DEMO_REVEALED_TEXT : 'masquée'}
             </AnswerPill>
           </div>
 
           {/* Stepper 1 · Sélection — 2 · Révélation — 3 · Verdict */}
-          <div className="mt-1 flex items-start justify-center gap-1 sm:gap-3" aria-hidden="true">
+          <div className="mt-2 flex items-start justify-center gap-1 sm:gap-3" aria-hidden="true">
             {[
               { n: 1, label: 'Sélection' },
               { n: 2, label: 'Révélation' },
@@ -162,44 +162,44 @@ export default function Admin() {
               const st = stepState(s.n);
               return (
                 <div key={s.n} className="flex items-start gap-1 sm:gap-3">
-                  <div className="flex w-20 flex-col items-center gap-1">
+                  <div className="flex w-24 flex-col items-center gap-1.5">
                     <span
-                      className={`flex h-9 w-9 items-center justify-center rounded-full border font-oswald text-base font-bold transition-all duration-300 ${
+                      className={`flex h-11 w-11 items-center justify-center rounded-full border font-oswald text-lg font-bold transition-all duration-300 ${
                         st === 'current'
-                          ? 'scale-110 border-orange bg-orange text-[#2B1500] shadow-[0_0_16px_rgba(255,159,28,.6)]'
+                          ? 'scale-110 border-orange bg-orange text-[#2B1500] shadow-[0_0_18px_rgba(255,159,28,.65)]'
                           : st === 'done'
-                            ? 'border-cyan/80 text-cyanclair'
+                            ? 'border-cyan/80 text-cyanclair shadow-[0_0_12px_rgba(53,224,248,.4)]'
                             : 'border-white/15 text-grisbleu'
                       }`}
                     >
                       {s.n}
                     </span>
                     <span
-                      className={`text-[10px] font-semibold uppercase tracking-wider ${
+                      className={`text-[11px] font-semibold uppercase tracking-wider ${
                         st === 'current' ? 'text-or' : st === 'done' ? 'text-cyanclair/80' : 'text-grisbleu'
                       }`}
                     >
                       {s.label}
                     </span>
                   </div>
-                  {i < 2 && <div className={`mt-4 h-px w-6 sm:w-14 ${step > s.n ? 'bg-cyan/70' : 'bg-white/15'}`} />}
+                  {i < 2 && <div className={`mt-5 h-px w-8 sm:w-16 ${step > s.n ? 'bg-cyan/70 shadow-[0_0_8px_rgba(53,224,248,.6)]' : 'bg-white/15'}`} />}
                 </div>
               );
             })}
           </div>
 
-          <p className="min-h-[2.25rem] text-center text-[11px] leading-snug text-grisbleu" aria-live="polite">
+          <p className="min-h-[2.5rem] text-center text-xs leading-snug text-grisbleu sm:text-[13px]" aria-live="polite">
             {status}
           </p>
 
           {/* Actions */}
-          <div className="mt-auto flex min-h-[3.25rem] items-center justify-center gap-3">
+          <div className="mt-auto flex min-h-[4rem] items-center justify-center gap-3">
             {!revealed && (
               <button
                 type="button"
                 disabled={!selection}
                 onClick={() => setRevealed(true)}
-                className="rounded-xl bg-gradient-to-b from-[#FFC35C] via-orange to-[#D97A06] px-12 py-2.5 font-oswald text-lg font-bold tracking-[0.18em] text-[#2B1500] shadow-[0_0_22px_rgba(255,159,28,.45)] transition enabled:hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-30"
+                className="rounded-2xl bg-gradient-to-b from-[#FFC35C] via-orange to-[#D97A06] px-14 py-3.5 font-oswald text-xl font-bold tracking-[0.18em] text-[#2B1500] shadow-[0_0_26px_rgba(255,159,28,.5)] transition enabled:hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-30 sm:text-2xl"
               >
                 RÉVÉLER
               </button>
@@ -209,14 +209,14 @@ export default function Admin() {
                 <button
                   type="button"
                   onClick={() => setVerdict('correct')}
-                  className="pill pill-green px-4 py-2.5 font-oswald text-xs tracking-[0.14em] sm:text-sm"
+                  className="pill pill-green px-5 py-3 font-oswald text-sm tracking-[0.14em] sm:text-base"
                 >
                   VERDICT — CORRECT
                 </button>
                 <button
                   type="button"
                   onClick={() => setVerdict('incorrect')}
-                  className="pill pill-red px-4 py-2.5 font-oswald text-xs tracking-[0.14em] sm:text-sm"
+                  className="pill pill-red px-5 py-3 font-oswald text-sm tracking-[0.14em] sm:text-base"
                 >
                   VERDICT — INCORRECT
                 </button>
@@ -226,7 +226,7 @@ export default function Admin() {
               <button
                 type="button"
                 onClick={reset}
-                className="rounded-xl border border-grisbleu/40 px-6 py-2 font-montserrat text-xs font-semibold text-grisbleu transition-colors hover:border-cyan hover:text-cyanclair"
+                className="rounded-2xl border border-grisbleu/40 px-6 py-2.5 font-montserrat text-xs font-semibold text-grisbleu transition-colors hover:border-cyan hover:text-cyanclair"
               >
                 Réinitialiser la démo
               </button>
@@ -240,45 +240,45 @@ export default function Admin() {
         </section>
 
         {/* --- Scènes + chat Twitch -------------------------------------- */}
-        <div className="flex flex-col gap-3">
-          <section className="panel p-3" aria-labelledby="admin-scenes">
-            <h2 id="admin-scenes" className="panel-title">SCÈNES</h2>
-            <div className="mt-2 flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
+          <section className="panel panel-glow p-4" aria-labelledby="admin-scenes">
+            <h2 id="admin-scenes" className="panel-title text-sm">SCÈNES</h2>
+            <div className="mt-3 flex flex-col gap-2.5">
               {SCENES.map((s) => (
                 <button
                   key={s}
                   type="button"
                   onClick={() => setActiveScene(s)}
                   aria-pressed={activeScene === s}
-                  className={`scene-item ${activeScene === s ? 'is-active' : ''}`}
+                  className={`scene-item px-4 py-3 text-base ${activeScene === s ? 'is-active' : ''}`}
                 >
-                  <svg viewBox="0 0 20 20" className="h-4 w-4 shrink-0 text-cyan" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" className="h-5 w-5 shrink-0 text-cyan" aria-hidden="true">
                     <path d="M4 5h12M4 10h12M4 15h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="2.5 3.5" />
                   </svg>
                   <span className="truncate">{s}</span>
                 </button>
               ))}
             </div>
-            <p className="mt-2 text-[9px] text-grisbleu/70">Liste des scènes — maquette 08 (à approfondir, D-06).</p>
+            <p className="mt-3 text-[9px] text-grisbleu/70">Liste des scènes — maquette 08 (à approfondir, D-06).</p>
           </section>
 
-          <section className="panel flex min-h-[150px] flex-1 flex-col p-3" aria-labelledby="admin-chat">
+          <section className="panel panel-glow flex min-h-[160px] flex-1 flex-col p-4" aria-labelledby="admin-chat">
             <div className="flex items-center justify-between gap-2">
-              <h2 id="admin-chat" className="panel-title">CHAT TWITCH</h2>
+              <h2 id="admin-chat" className="panel-title text-sm">CHAT TWITCH</h2>
               <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-grisbleu/70">brief §3</span>
             </div>
-            <div className="mt-2 flex flex-1 flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-white/15 p-3 text-center">
-              <svg viewBox="0 0 24 24" className="h-7 w-7 text-grisbleu/70" fill="none" aria-hidden="true">
+            <div className="mt-3 flex flex-1 flex-col items-center justify-center gap-2.5 rounded-xl border border-dashed border-white/20 bg-white/[.02] p-4 text-center">
+              <svg viewBox="0 0 24 24" className="h-9 w-9 text-grisbleu/80" fill="none" aria-hidden="true">
                 <path d="M4 5h16v11H9l-4 4V5z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
               </svg>
-              <p className="text-[11px] font-semibold text-grisbleu">Zone réservée — chat Twitch compact</p>
+              <p className="text-xs font-semibold text-grisbleu">Zone réservée — chat Twitch compact</p>
               <p className="text-[9px] text-grisbleu/60">Non connecté dans le squelette</p>
             </div>
           </section>
         </div>
       </div>
 
-      <footer className="py-2 text-center text-[9px] text-grisbleu/60">
+      <footer className="py-3 text-center text-[9px] text-grisbleu/60">
         jeu — squelette de l'interface administrateur · aucune action n'a d'effet réel (démo locale)
       </footer>
     </main>

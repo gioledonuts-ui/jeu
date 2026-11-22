@@ -21,6 +21,7 @@ export default function VideoFrame({
   aspect = 'aspect-[5/6]',
   showLives = true,
   labelPosition = 'top', // 'top' (maquettes 07) | 'bottom' (maquette 09)
+  innerClass = '', // ex. "h-[54vh] aspect-[4/5]" — contourne w-full/aspect pour des cadres pilotés par la hauteur
 }) {
   const labelEl = (
     <span
@@ -39,7 +40,7 @@ export default function VideoFrame({
       {labelPosition === 'top' && heartsEl}
       {labelPosition === 'bottom' && heartsEl}
       <div
-        className={`relative w-full overflow-hidden ${aspect} ${
+        className={`relative overflow-hidden ${innerClass || `w-full ${aspect}`} ${
           duel ? 'frame-duel' : 'frame-cyan'
         } ${frameClassName}`}
       >

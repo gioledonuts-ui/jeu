@@ -41,15 +41,37 @@ export default function Starfield({ mode = 'blue', density = 150 }) {
   const sparkles = useMemo(() => {
     const rand = mulberry32(mode === 'duel' ? 9001 : 777);
     const list = [];
-    const count = mode === 'duel' ? 16 : 12;
+    const count = mode === 'duel' ? 18 : 14;
     for (let i = 0; i < count; i += 1) {
       list.push({
         id: i,
         x: rand() * 1920,
-        y: rand() * 720,
-        scale: rand() * 0.9 + 0.6,
+        y: rand() * 1080,
+        scale: rand() * 1.15 + 0.65,
         delay: rand() * 3.5,
         fill: mode === 'duel' ? (rand() > 0.4 ? '#FFD9A0' : '#FF9F5A') : rand() > 0.35 ? '#FFC42E' : '#FFFFFF',
+      });
+    }
+    return list;
+  }, [mode]);
+
+  const rising = useMemo(() => {
+    const rand = mulberry32(mode === 'duel' ? 5150 : 2600);
+    const list = [];
+    const count = mode === 'duel' ? 40 : 52;
+    const palette =
+      mode === 'duel'
+        ? ['#FFD9A0', '#FF9F5A', '#FFFFFF', '#FFC42E']
+        : ['#7FF0FF', '#FFFFFF', '#FFC42E', '#35E0F8'];
+    for (let i = 0; i < count; i += 1) {
+      list.push({
+        id: i,
+        left: rand() * 100,
+        size: rand() * 3.4 + 1.1,
+        delay: rand() * 14,
+        duration: 9 + rand() * 9,
+        color: palette[Math.floor(rand() * palette.length)],
+        drift: (rand() - 0.5) * 16,
       });
     }
     return list;
@@ -58,8 +80,33 @@ export default function Starfield({ mode = 'blue', density = 150 }) {
   useEffect(() => () => {}, []);
 
   return (
-    <svg
-      aria-hidden="true"
+    <>
+      {/* Dégradé vivant — nébuleuse bleue (ou rouge pour le duel) en dérive lente */}
+      <div
+        aria-hidden="true"
+        className={`aurora pointer-events-none absolute ${mode === 'duel' ? 'aurora-duel' : 'aurora-blue'}`}
+      />
+      {/* Champ de particules ascendantes (cinéma : la salle monte) */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        {rising.map((p) => (
+          <span
+            key={`rise-${p.id}`}
+            className="particle"
+            style={{
+              left: `${p.left}%`,
+              width: `${p.size}px`,
+              height: `${p.size}px`,
+              background: p.color,
+              boxShadow: `0 0 ${p.size * 2.4}px ${p.color}`,
+              animationDelay: `-${p.delay}s`,
+              animationDuration: `${p.duration}s`,
+              '--drift': `${p.drift}vw`,
+            }}
+          />
+        ))}
+      </div>
+      <svg
+        aria-hidden="true"
       className="pointer-events-none absolute inset-0 h-full w-full"
       viewBox="0 0 1920 1080"
       preserveAspectRatio="xMidYMid slice"
@@ -87,6 +134,7 @@ export default function Starfield({ mode = 'blue', density = 150 }) {
           style={{ animationDelay: `${s.delay}s` }}
         />
       ))}
-    </svg>
+      </svg>
+    </>
   );
 }
