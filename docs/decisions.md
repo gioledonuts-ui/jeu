@@ -16,6 +16,13 @@
 | D-06 | Règles du jeu — vies, éliminations, épreuves, enchaînements | **À approfondir** | Brief | Non entièrement spécifié — ne jamais compléter par supposition |
 | D-07 | Mécanique exacte de la finale (2 finalistes, chronomètre) | **À approfondir** | Brief | Uniquement principe connu ; détail à définir avec l'IA 1 |
 
+## 2026-11-22 — Mission 1 pour IA 3
+
+| # | Élément | Statut | Source | Notes |
+|---|---|---|---|---|
+| D-08 | Prompts de travail — format et calibration (auto-suffisance, listes à relire, skills à consulter) | **Direction retenue** | Utilisateur (2026-11-22) | `prompts/README.md` ; première mission consignée dans `prompts/01-premiere-mission.md` |
+| D-09 | IA 3 — aucune Pull Request sur GitHub ; déploiement Vercel à chaque session | **Confirmé** | Utilisateur (2026-11-22) | Contraintes opérationnelles ajoutées dans `prompts/01-premiere-mission.md` |
+
 ## À noter
 
 - D-01 et D-02 marquent des décisions de direction : elles ne deviennent « Confirmé » que sur

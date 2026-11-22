@@ -21,7 +21,7 @@ Le projet fonctionne avec trois couches distinctes — ne les confondez jamais :
 |---|---|---|
 | **Documents du projet** | Ce que l'application doit faire (règles, architecture, fonctionnement) | `docs/` |
 | **Skills** | Comment l'IA doit travailler pour respecter ces documents | `skills/` |
-| **Prompts de travail** | La tâche précise demandée à un moment donné | (le message de l'utilisateur) |
+| **Prompts de travail** | La tâche précise demandée à un moment donné | `prompts/` — ou le message de l'utilisateur |
 
 - Les **Skills** ne répètent pas le cahier des charges : ils expliquent la méthode de travail,
   les vérifications, les erreurs à éviter.
@@ -65,6 +65,7 @@ Le projet fonctionne avec trois couches distinctes — ne les confondez jamais :
 | `AGENTS.md` | Ce fichier — instructions générales permanentes |
 | `skills/` | Instructions spécialisées et réutilisables (voir `skills/README.md`) |
 | `docs/` | Documentation du projet (règles, architecture, identité, décisions) |
+| `prompts/` | Prompts de travail pour l'IA 3 (voir `prompts/README.md`) |
 
 ## 6. Séparation des environnements (mémoire)
 

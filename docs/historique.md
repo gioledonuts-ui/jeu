@@ -3,6 +3,14 @@
 > Journal chronologique des décisions et modifications importantes (date, motif, effet).
 > Tenu par IA 2 ; les décisions sont datées.
 
+## 2026-11-22 — Mission 1 pour IA 3
+
+- **Prompts de travail** : format auto-suffisant défini (`prompts/README.md`) ;
+- **Mission 1** : `prompts/01-premiere-mission.md` — initialisation et mise en place du projet
+  (stack à confirmer par IA 1) ; contraintes confirmées D-09 (pas de PR sur GitHub ; déployer
+  Vercel à chaque session) ;
+- **Registre des décisions** : D-08 et D-09 ajoutés.
+
 ## 2026-11-22 — Socle et direction artistique
 
 - **Socle** : `AGENTS.md`, `skills/` (`project-analysis`, `visual-identity`), `docs/`
