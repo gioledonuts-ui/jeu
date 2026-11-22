@@ -68,11 +68,10 @@ un paramètre de mise en page non documenté. Pour toute info manquante → sign
 4. **Tester** l'interface (rendu visuel des trois interfaces).
 5. **Déployer** sur Vercel et signaler l'URL.
 
-## À confirmer par l'utilisateur AVANT d'exécuter
+## Stack (confirmée par IA 1)
 
-- **Stack technique** (framework, runtime, build) — aucune décision n'est prise dans
-  `docs/architecture-technique.md` ; à choisir avec IA 1. **Non négociable :** ne pas
-  trancher seul.
+- **Vite + React + Tailwind CSS** — Vercel pour le déploiement.
+- Ne pas introduire une autre stack sans validation explicite.
 
 ## Conditions de fin
 

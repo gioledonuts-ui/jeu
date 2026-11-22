@@ -12,7 +12,7 @@
 | D-02 | Format des Skills — Markdown + front matter dans `skills/` | **Confirmé** | Utilisateur, validation (2026-11-22) | `skills/README.md`, `skills/_template.md`, deux Skills conçus (`project-analysis`, `visual-identity`) |
 | D-03 | Documentation dans le dépôt (`docs/`) | **Confirmé** | Utilisateur, validation (2026-11-22) | Source de vérité ; Google Docs éventuellement en livrable |
 | D-04 | Vercel — `jeu` est le projet officiel ; `jeugionny` à retirer | **Direction retenue** | Utilisateur (2026-11-22) | Retrait en attente de validation explicite — voir AGENTS.md |
-| D-05 | Architecture technique — stack (framework, base de données, temps réel) | **À approfondir** | — | Aucune décision prise ; à concevoir avant développement |
+| D-05 | Architecture technique — stack | **Confirmé** : Vite + React + Tailwind CSS | Utilisateur (2026-11-22) | Base de données / temps réel / auth : à approfondir séparément |
 | D-06 | Règles du jeu — vies, éliminations, épreuves, enchaînements | **À approfondir** | Brief | Non entièrement spécifié — ne jamais compléter par supposition |
 | D-07 | Mécanique exacte de la finale (2 finalistes, chronomètre) | **À approfondir** | Brief | Uniquement principe connu ; détail à définir avec l'IA 1 |
 

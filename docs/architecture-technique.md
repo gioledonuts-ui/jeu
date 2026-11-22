@@ -3,9 +3,14 @@
 > **Statut global : À APPROFONDIR** — aucun choix technique confirmé.
 > Ce document est le gabarit de ce qui sera décidé et consigné avant développement.
 
+## Stack (VALIDÉE)
+
+- **Vite + React + Tailwind CSS** (confirmée par IA 1, 2026-11-22).
+- Vercel pour le déploiement (`jeu` — projet officiel).
+
 ## Questions à trancher avant développement
 
-- Stack (framework, runtime, build) ;
+- Framework detail / runtime exact — sous réserve de cette stack ;
 - Base de données et temps réel — Supabase existant (`qg2gionny`) = QG (réseau social, comptes,
   messages, posts) — **non** support métier du jeu sans décision explicite ;
 - Authentification (compte QG vs invité avec code d'invitation) ;
@@ -25,5 +30,5 @@
 
 ## Statuts
 
-- Vercel (`jeu` officiel) — **Direction retenue** ;
+- Stack — **Confirmé** : Vite + React + Tailwind CSS ; Vercel — **Direction retenue** ;
 - Tout le reste — **À approfondir**, à trancher avant développement, pas avant validation des documents.

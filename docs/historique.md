@@ -10,6 +10,7 @@
   (stack à confirmer par IA 1) ; contraintes confirmées D-09 (pas de PR sur GitHub ; déployer
   Vercel à chaque session) ;
 - **Registre des décisions** : D-08 et D-09 ajoutés.
+- **Stack confirmée (2026-11-22)** : Vite + React + Tailwind CSS — D-05 mis à jour.
 
 ## 2026-11-22 — Socle et direction artistique
 
