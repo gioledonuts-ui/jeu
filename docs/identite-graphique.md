@@ -179,14 +179,18 @@ deux boutons-réponses :
 Les maquettes sont **des propositions, pas des décisions finales**. Elles sont à créer
 progressivement, en suivant le circuit : **présentation → validation → consignation**.
 
-Liste prévue (initiales) :
-- `maquettes/01-question-individuelle.[jpg]` — présentation + candidat, deux réponses (une masquée) ;
-- `maquettes/02-question-selection-orange.[jpg]` — étape 1 (sélection provisoire) ;
-- `maquettes/03-question-revelation.[jpg]` — étape 2 (révélée toujours orange) ;
-- `maquettes/04-question-verdict.[jpg]` — étape 3 (vert/rouge) ;
-- `maquettes/05-sept-propositions.[jpg]` — la 2e épreuve ;
-- `maquettes/06-duel.[jpg]` — duel rouge ;
-- `maquettes/07-vue-generale.[jpg]` — vue présentateur + 4 candidats.
+Maquettes produites (sous `docs/maquettes/`, toutes 16:9) :
+- `01-question-individuelle.jpg` — État initial : présentateur + candidat, deux réponses dont une masquée ;
+- `02-selection-orange.jpg` — Étape 1 : réponse provisoire en orange (masquée, toujours `?`) ;
+- `03-revelation.jpg` — Étape 2 : réponse révélée, toujours orange ;
+- `04-verdict.jpg` — Étape 3 : réponse correcte vertée (verdict définitif) ;
+- `05-sept-propositions.jpg` — Épreuve 2 : 7 propositions (2 validées vertes, 1 provisoire orange, 4 neutres) + grande zone vidéo ;
+- `06-duel.jpg` — Duel rouge : badge or, minuterie, 2 finalistes, bande orange radiée ;
+- `07-vue-generale.jpg` — Vue générale : présentateur + 4 candidats, vies (cœur vert/orange) ;
+- `08-admin.jpg` — Interface administrateur compacte : candidats compacts, trois étapes, scènes, minuterie ;
+- `09-participant.jpg` — Interface participant épurée : présentateur + 4 candidats, vies (2 cœurs), micro/cam.
+
+> Les maquettes sont **des propositions** : elles ne sont pas définitives avant validation de l'utilisateur.
 
 ## 14. Choix à valider avant d'être considérés comme définitifs
 
