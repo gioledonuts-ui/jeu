@@ -1,0 +1,285 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Direction artistique : docs/identite-graphique.md
+ * (palette §2, typographies §3, formes §4, arrière-plans §5, bande de question §4/§7,
+ * cadres cyan lumineux §6, pilules §4/§7, habillage rouge du duel §10).
+ */
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-nuit text-allum font-montserrat antialiased;
+}
+
+/* --- Arrière-plans de scène ------------------------------------------ */
+
+.bg-scene-blue {
+  background:
+    radial-gradient(1100px 620px at 50% 30%, rgba(53, 224, 248, 0.22), transparent 60%),
+    radial-gradient(1400px 900px at 50% 45%, #2e57f6 0%, #1b3dd1 38%, #141d50 74%, #0a1030 100%);
+}
+
+.bg-scene-duel {
+  background:
+    radial-gradient(1000px 560px at 50% 26%, rgba(255, 178, 106, 0.28), transparent 55%),
+    radial-gradient(1500px 950px at 50% 45%, #d92b3d 0%, #7a1226 48%, #2b0014 100%);
+}
+
+.vignette {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 42%, transparent 55%, rgba(4, 7, 24, 0.55) 100%);
+}
+
+/* --- Bande de question (§4 / §7) ------------------------------------- */
+
+.question-band {
+  position: relative;
+  background: rgba(8, 12, 40, 0.82);
+  border-top: 1px solid rgba(127, 240, 255, 0.55);
+  border-bottom: 1px solid rgba(127, 240, 255, 0.55);
+  box-shadow:
+    0 -10px 34px rgba(53, 224, 248, 0.18),
+    0 10px 34px rgba(53, 224, 248, 0.18),
+    inset 0 0 34px rgba(53, 224, 248, 0.09);
+}
+
+.question-band-duel {
+  background: rgba(11, 14, 40, 0.9);
+  border-top: 2px solid rgba(255, 178, 106, 0.85);
+  border-bottom: 1px solid rgba(255, 178, 106, 0.35);
+  box-shadow:
+    0 -8px 34px rgba(255, 159, 28, 0.28),
+    0 8px 34px rgba(217, 43, 61, 0.35),
+    inset 0 0 30px rgba(255, 159, 28, 0.1);
+}
+
+.text-glow {
+  text-shadow:
+    0 0 20px rgba(127, 240, 255, 0.5),
+    0 2px 1px rgba(0, 0, 0, 0.45);
+}
+
+.text-glow-or {
+  text-shadow:
+    0 0 22px rgba(255, 194, 46, 0.5),
+    0 2px 1px rgba(0, 0, 0, 0.45);
+}
+
+/* --- Cadres vidéo (§6) ------------------------------------------------ */
+
+.frame-cyan {
+  border: 3px solid rgba(53, 224, 248, 0.92);
+  border-radius: 1.15rem;
+  box-shadow:
+    inset 0 0 20px rgba(53, 224, 248, 0.35),
+    0 0 20px rgba(53, 224, 248, 0.42),
+    0 0 62px rgba(53, 224, 248, 0.18);
+}
+
+.frame-duel {
+  border: 3px solid rgba(255, 178, 106, 0.95);
+  border-radius: 1.75rem;
+  animation: duelPulse 4.5s ease-in-out infinite;
+}
+
+@keyframes duelPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 22px rgba(255, 178, 106, 0.35),
+      0 0 70px rgba(217, 43, 61, 0.4),
+      inset 0 0 26px rgba(255, 178, 106, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(255, 178, 106, 0.62),
+      0 0 120px rgba(255, 159, 28, 0.35),
+      inset 0 0 34px rgba(255, 178, 106, 0.45);
+  }
+}
+
+/* --- Pilules nom (maquettes 01 / 07 / 09) ----------------------------- */
+
+.pill-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.22rem 1.35rem;
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #052a3d;
+  background: linear-gradient(180deg, #5ceaff 0%, #1cc3e8 46%, #0e8db8 100%);
+  border: 1px solid rgba(158, 246, 255, 0.95);
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.65),
+    inset 0 -4px 7px rgba(6, 58, 82, 0.5),
+    0 3px 14px rgba(53, 224, 248, 0.35);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+}
+
+.pill-label-duel {
+  color: #ffe9c2;
+  background: linear-gradient(180deg, #3a1322 0%, #240a14 100%);
+  border: 1px solid rgba(255, 178, 106, 0.75);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 178, 106, 0.35),
+    0 0 18px rgba(255, 140, 60, 0.35);
+  text-shadow: 0 1px 2px #000;
+}
+
+/* --- Pilules de réponse (§7) ------------------------------------------ */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 9999px;
+  padding: 0.55rem 1.6rem;
+  font-weight: 700;
+  color: #f4f8ff;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -4px 9px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  user-select: none;
+}
+
+.pill-neutral {
+  background: linear-gradient(180deg, #27377f 0%, #1b3dd1 55%, #12275f 100%);
+  border: 1px solid rgba(150, 180, 255, 0.55);
+}
+
+.pill-hidden {
+  background: linear-gradient(180deg, #3a4368 0%, #29325a 60%, #1b2340 100%);
+  border: 1px solid rgba(159, 180, 217, 0.45);
+  color: #cdd9f2;
+}
+
+.pill-orange {
+  background: linear-gradient(180deg, #ffc35c 0%, #ff9f1c 45%, #d97a06 100%);
+  border: 1px solid rgba(255, 226, 158, 0.9);
+  box-shadow:
+    0 0 22px rgba(255, 159, 28, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.55),
+    inset 0 -4px 9px rgba(122, 56, 0, 0.5);
+}
+
+.pill-green {
+  background: linear-gradient(180deg, #6bf59d 0%, #3ce97b 45%, #149b4c 100%);
+  border: 1px solid rgba(203, 255, 222, 0.85);
+  box-shadow:
+    0 0 20px rgba(60, 233, 123, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 9px rgba(4, 80, 34, 0.5);
+}
+
+.pill-red {
+  background: linear-gradient(180deg, #ff6d7e 0%, #e63646 45%, #8e1420 100%);
+  border: 1px solid rgba(255, 190, 198, 0.8);
+  box-shadow:
+    0 0 20px rgba(230, 54, 70, 0.45),
+    inset 0 2px 4px rgba(255, 255, 255, 0.45),
+    inset 0 -4px 9px rgba(80, 4, 12, 0.55);
+}
+
+/* --- Panneaux admin (maquette 08) -------------------------------------- */
+
+.panel {
+  background: rgba(20, 27, 51, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.9rem;
+}
+
+.panel-title {
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  color: #9fb4d9;
+}
+
+.row-candidate {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  text-align: left;
+  background: rgba(27, 35, 64, 0.9);
+  border: 1px solid transparent;
+  border-radius: 0.7rem;
+  padding: 0.45rem 0.6rem;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.row-candidate:hover {
+  border-color: rgba(53, 224, 248, 0.35);
+}
+
+.scene-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  background: rgba(27, 35, 64, 0.9);
+  border: 1px solid transparent;
+  border-radius: 0.7rem;
+  padding: 0.55rem 0.7rem;
+  color: #e7edfb;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.scene-item:hover {
+  border-color: rgba(53, 224, 248, 0.4);
+}
+.scene-item.is-active {
+  border-color: rgba(53, 224, 248, 0.75);
+  color: #bff4ff;
+  background: rgba(21, 40, 70, 0.95);
+  box-shadow: 0 0 14px rgba(53, 224, 248, 0.22), inset 0 0 14px rgba(53, 224, 248, 0.12);
+}
+
+/* --- Divers ------------------------------------------------------------ */
+
+.panel-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.panel-scroll::-webkit-scrollbar-thumb {
+  background: rgba(159, 180, 217, 0.35);
+  border-radius: 9999px;
+}
+
+.card-interface {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.card-interface:hover {
+  transform: translateY(-4px);
+  border-color: rgba(53, 224, 248, 0.65);
+  box-shadow: 0 0 26px rgba(53, 224, 248, 0.28), 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+.card-interface:focus-visible {
+  outline: 2px solid #35e0f8;
+  outline-offset: 3px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #35e0f8;
+  outline-offset: 2px;
+}
