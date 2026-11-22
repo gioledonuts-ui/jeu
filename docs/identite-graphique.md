@@ -1,8 +1,9 @@
 # Direction artistique — Le jeu
 
-> **Statut : PROPOSITION — en attente de validation.** Ni cette charte ni les maquettes associées
-> ne constituent encore des décisions définitives. Rien ici ne doit être livré en tant que
-> charte définitive avant validation explicite de l'utilisateur.
+> **Statut : VALIDÉE — direction générale validée par l'utilisateur** (maquettes appréciées,
+> identité jugée conforme). Objet : l'identité visuelle, ses couleurs et ses principes, sont
+> retenues comme direction de départ. Certains détails (symbolème des vies, duel structure)
+> restent à confirmer en discussion et ne remplacent pas les choix définitifs.
 
 ## 1. Analyse des références
 
@@ -190,7 +191,8 @@ Maquettes produites (sous `docs/maquettes/`, toutes 16:9) :
 - `08-admin.jpg` — Interface administrateur compacte : candidats compacts, trois étapes, scènes, minuterie ;
 - `09-participant.jpg` — Interface participant épurée : présentateur + 4 candidats, vies (2 cœurs), micro/cam.
 
-> Les maquettes sont **des propositions** : elles ne sont pas définitives avant validation de l'utilisateur.
+> Les maquettes sont **conformes à la direction validée** ; elles demeurent des propositions de
+> maquette (`01–09`), à affiner au gré des retours et des décisions prises.
 
 ## 14. Choix à valider avant d'être considérés comme définitifs
 
