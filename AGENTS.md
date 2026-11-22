@@ -70,6 +70,6 @@ Le projet fonctionne avec trois couches distinctes — ne les confondez jamais :
 
 - **QG** (`qg2gionny`, Supabase) : le réseau social de l'utilisateur (comptes, messages,
   groupes). Ne pas en faire un support de données métier du jeu sans décision explicite.
-- **Vercel** (`jeu` et `jeugionny`) : deux projets liés au dépôt — à clarifier (un seul devrait
-  exister, ou distinguer préproduction/production).
+- **Vercel** (`jeu` et `jeugionny`) : `jeu` est le projet officiel du dépôt ; `jeugionny` est
+  un artefact à supprimer/retirer, sous réserve de validation explicite de l'utilisateur.
 - Cette mission n'inclut **pas** le déploiement ni le développement.

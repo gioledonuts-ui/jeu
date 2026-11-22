@@ -30,7 +30,7 @@ Statuts : `à concevoir` (à créer au fur et à mesure) · `conçu` (créé) ·
 | Skill | Périmètre | Statut |
 |---|---|---|
 | `project-analysis` | Comprendre le projet avant toute modification | **conçu** |
-| `visual-identity` | Identité graphique, interfaces, maquettes | à concevoir (première mission) |
+| `visual-identity` | Identité graphique, interfaces, maquettes | **conçu** — contenu à valider après analyse des références |
 | `ui-implementation` | Aide aux interfaces : structure, composants, responsive | à concevoir (futur) |
 | `game-logic` | Règles et logique du jeu (états, vies, épreuves, mécanique des réponses) | à concevoir (futur) |
 | `scenes-production` | Scènes, réalisation automatique, caméras, transitions | à concevoir (futur) |
