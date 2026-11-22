@@ -3,6 +3,13 @@
 > Journal chronologique des décisions et modifications importantes (date, motif, effet).
 > Tenu par IA 2 ; les décisions sont datées.
 
+## 2026-11-22 — Prompt de départ IA 3 + suppression de jeugionny
+
+- **Prompt de départ** : `prompts/demarche-ia3.md` — mini-prompt autonome pour la conversation
+  neuve de l'IA 3 (lecture de la mission 1 → déploiement Vercel) ;
+- **Vercel** : `jeugionny` supprimé — `jeu` reste le seul projet officiel ;
+- **Registre** : D-04 finalisé (exécuté) ; D-10 ajouté.
+
 ## 2026-11-22 — Mission 1 pour IA 3
 
 - **Prompts de travail** : format auto-suffisant défini (`prompts/README.md`) ;
