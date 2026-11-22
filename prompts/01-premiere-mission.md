@@ -56,8 +56,7 @@ un paramètre de mise en page non documenté. Pour toute info manquante → sign
 ## Tâche
 
 1. **Scaffolder** le dépôt :
-   - confirmer le stack avec l'utilisateur (À FAIRE VALIDER explicitement — voir
-     **À confirmer** ci-dessous) ;
+   - utiliser la stack confirmée (Vite + React + Tailwind CSS — voir Stack ci-dessous) ;
    - créer `README.md` (présentation du projet, lien vers les documents, état des
      interfaces et de l'identité) ;
    - créer le squelette des trois interfaces (diffusion · administrateur · participant) en
